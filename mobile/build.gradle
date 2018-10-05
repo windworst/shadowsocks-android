@@ -3,7 +3,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 
 def getCurrentFlavor() {
@@ -56,8 +56,8 @@ android {
 dependencies {
     implementation project(':core')
     implementation "androidx.browser:browser:$androidxVersion"
-    implementation 'com.google.android.gms:play-services-vision:15.0.2'
-    implementation 'com.google.firebase:firebase-ads:15.0.1'
+//    implementation 'com.google.android.gms:play-services-vision:15.0.2'
+//    implementation 'com.google.firebase:firebase-ads:15.0.1'
     implementation "com.takisoft.preferencex:preferencex-simplemenu:$preferencexVersion"
     implementation 'com.twofortyfouram:android-plugin-api-for-locale:1.0.4'
     implementation 'net.glxn.qrgen:android:2.0'
@@ -70,7 +70,7 @@ repositories {
     mavenCentral()
 }
 
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
 
 ext.abiCodes = ['armeabi-v7a': 1, 'arm64-v8a': 2, x86: 3]
 if (getCurrentFlavor() == 'release') android.applicationVariants.all { variant ->

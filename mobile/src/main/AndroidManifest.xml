@@ -57,11 +57,11 @@
             android:excludeFromRecents="true"
             android:launchMode="singleTask"/>
 
-        <activity
-            android:name=".ScannerActivity"
-            android:label="@string/add_profile_methods_scan_qr_code"
-            android:parentActivityName=".MainActivity"
-            android:excludeFromRecents="true"/>
+        <!--<activity-->
+            <!--android:name=".ScannerActivity"-->
+            <!--android:label="@string/add_profile_methods_scan_qr_code"-->
+            <!--android:parentActivityName=".MainActivity"-->
+            <!--android:excludeFromRecents="true"/>-->
 
         <activity android:name=".tasker.ConfigActivity"
                   android:icon="@mipmap/ic_launcher">

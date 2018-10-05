@@ -22,7 +22,7 @@ package com.github.shadowsocks.bg
 
 import android.text.TextUtils
 import android.util.Log
-import com.crashlytics.android.Crashlytics
+//import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.Core.app
 import com.github.shadowsocks.JniHelper
 import java.io.File
@@ -47,8 +47,7 @@ object Executable {
             if (exe.parent == app.applicationInfo.nativeLibraryDir && EXECUTABLES.contains(exe.name)) {
                 val errno = JniHelper.sigkill(process.name.toInt())
                 if (errno != 0) {
-                    Crashlytics.log(Log.WARN, "kill",
-                            "SIGKILL ${exe.absolutePath} (${process.name}) failed with $errno")
+                    //Crashlytics.log(Log.WARN, "kill", "SIGKILL ${exe.absolutePath} (${process.name}) failed with $errno")
                 }
             }
         }

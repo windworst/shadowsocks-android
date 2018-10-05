@@ -40,7 +40,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.work.WorkManager
-import com.crashlytics.android.Crashlytics
+////import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.acl.Acl
 import com.github.shadowsocks.bg.BaseService
 import com.github.shadowsocks.core.R
@@ -48,10 +48,10 @@ import com.github.shadowsocks.database.Profile
 import com.github.shadowsocks.database.ProfileManager
 import com.github.shadowsocks.preference.DataStore
 import com.github.shadowsocks.utils.*
-import com.google.firebase.FirebaseApp
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import io.fabric.sdk.android.Fabric
+//import com.google.firebase.FirebaseApp
+//import com.google.firebase.analytics.FirebaseAnalytics
+//import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+//import io.fabric.sdk.android.Fabric
 import java.io.File
 import java.io.IOException
 import kotlin.reflect.KClass
@@ -64,8 +64,8 @@ object Core {
     val handler by lazy { Handler(Looper.getMainLooper()) }
     val packageInfo: PackageInfo by lazy { getPackageInfo(app.packageName) }
     val deviceStorage by lazy { if (Build.VERSION.SDK_INT < 24) app else DeviceStorageApp(app) }
-    val remoteConfig: FirebaseRemoteConfig by lazy { FirebaseRemoteConfig.getInstance() }
-    val analytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(deviceStorage) }
+//    val remoteConfig: FirebaseRemoteConfig by lazy { FirebaseRemoteConfig.getInstance() }
+//    val analytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(deviceStorage) }
     val directBootSupported by lazy {
         Build.VERSION.SDK_INT >= 24 && app.getSystemService<DevicePolicyManager>()?.storageEncryptionStatus ==
                 DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER
@@ -96,15 +96,15 @@ object Core {
             }
         }
 
-        Fabric.with(deviceStorage, Crashlytics())   // multiple processes needs manual set-up
-        FirebaseApp.initializeApp(deviceStorage)
-        remoteConfig.setDefaults(R.xml.default_configs)
-        remoteConfig.fetch().addOnCompleteListener {
-            if (it.isSuccessful) remoteConfig.activateFetched() else {
-                Log.e(TAG, "Failed to fetch config")
-                Crashlytics.logException(it.exception)
-            }
-        }
+//        Fabric.with(deviceStorage, Crashlytics())   // multiple processes needs manual set-up
+//        FirebaseApp.initializeApp(deviceStorage)
+//        remoteConfig.setDefaults(R.xml.default_configs)
+//        remoteConfig.fetch().addOnCompleteListener {
+//            if (it.isSuccessful) remoteConfig.activateFetched() else {
+//                Log.e(TAG, "Failed to fetch config")
+//                //Crashlytics.logException(it.exception)
+//            }
+//        }
         WorkManager.initialize(deviceStorage, androidx.work.Configuration.Builder().build())
 
         // handle data restored/crash

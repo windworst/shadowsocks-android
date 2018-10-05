@@ -26,7 +26,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.isGone
-import com.crashlytics.android.Crashlytics
+//import com.crashlytics.android.Crashlytics
 
 class AutoCollapseTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
                                                      defStyleAttr: Int = 0) :
@@ -41,14 +41,14 @@ class AutoCollapseTextView @JvmOverloads constructor(context: Context, attrs: At
         super.onFocusChanged(focused, direction, previouslyFocusedRect)
     } catch (e: IndexOutOfBoundsException) {
         e.printStackTrace()
-        Crashlytics.logException(e)
+        //Crashlytics.logException(e)
     }
 
     override fun onTouchEvent(event: MotionEvent?) = try {
         super.onTouchEvent(event)
     } catch (e: IndexOutOfBoundsException) {
         e.printStackTrace()
-        Crashlytics.logException(e)
+        //Crashlytics.logException(e)
         false
     }
 }

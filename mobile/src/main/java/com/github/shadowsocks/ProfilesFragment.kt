@@ -39,7 +39,7 @@ import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.*
-import com.crashlytics.android.Crashlytics
+////import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.bg.BaseService
 import com.github.shadowsocks.database.Profile
 import com.github.shadowsocks.database.ProfileManager
@@ -49,9 +49,9 @@ import com.github.shadowsocks.utils.Action
 import com.github.shadowsocks.utils.datas
 import com.github.shadowsocks.utils.printLog
 import com.github.shadowsocks.widget.UndoSnackbarManager
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
+//import com.google.android.gms.ads.AdRequest
+//import com.google.android.gms.ads.AdSize
+//import com.google.android.gms.ads.AdView
 import net.glxn.qrgen.android.QRCode
 import org.json.JSONArray
 
@@ -123,7 +123,7 @@ class ProfilesFragment : ToolbarFragment(), Toolbar.OnMenuItemClickListener {
         private val text2 = itemView.findViewById<TextView>(android.R.id.text2)
         private val traffic = itemView.findViewById<TextView>(R.id.traffic)
         private val edit = itemView.findViewById<View>(R.id.edit)
-        private var adView: AdView? = null
+//        private var adView: AdView? = null
 
         init {
             edit.setOnClickListener {
@@ -171,28 +171,28 @@ class ProfilesFragment : ToolbarFragment(), Toolbar.OnMenuItemClickListener {
                 if (selectedItem === this) selectedItem = null
             }
 
-            var adView = adView
-            if (item.host == "198.199.101.152") {
-                if (adView == null) {
-                    val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT)
-                    params.gravity = Gravity.CENTER_HORIZONTAL
-                    adView = AdView(context)
-                    adView.layoutParams = params
-                    adView.adUnitId = "ca-app-pub-9097031975646651/7760346322"
-                    adView.adSize = AdSize.FLUID
-                    val padding = context.resources.getDimensionPixelOffset(R.dimen.profile_padding)
-                    adView.setPadding(padding, 0, 0, padding)
-
-                    itemView.findViewById<LinearLayout>(R.id.content).addView(adView)
-
-                    // Load Ad
-                    val adBuilder = AdRequest.Builder()
-                    adBuilder.addTestDevice("B08FC1764A7B250E91EA9D0D5EBEB208")
-                    adView.loadAd(adBuilder.build())
-                    this.adView = adView
-                } else adView.visibility = View.VISIBLE
-            } else adView?.visibility = View.GONE
+//            var adView = adView
+//            if (item.host == "198.199.101.152") {
+//                if (adView == null) {
+//                    val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+//                            ViewGroup.LayoutParams.WRAP_CONTENT)
+//                    params.gravity = Gravity.CENTER_HORIZONTAL
+//                    adView = AdView(context)
+//                    adView.layoutParams = params
+//                    adView.adUnitId = "ca-app-pub-9097031975646651/7760346322"
+//                    adView.adSize = AdSize.FLUID
+//                    val padding = context.resources.getDimensionPixelOffset(R.dimen.profile_padding)
+//                    adView.setPadding(padding, 0, 0, padding)
+//
+//                    itemView.findViewById<LinearLayout>(R.id.content).addView(adView)
+//
+//                    // Load Ad
+//                    val adBuilder = AdRequest.Builder()
+//                    adBuilder.addTestDevice("B08FC1764A7B250E91EA9D0D5EBEB208")
+//                    adView.loadAd(adBuilder.build())
+//                    this.adView = adView
+//                } else adView.visibility = View.VISIBLE
+//            } else adView?.visibility = View.GONE
         }
 
         override fun onClick(v: View?) {
@@ -361,10 +361,10 @@ class ProfilesFragment : ToolbarFragment(), Toolbar.OnMenuItemClickListener {
 
     override fun onMenuItemClick(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_scan_qr_code -> {
-                startActivity(Intent(context, ScannerActivity::class.java))
-                true
-            }
+//            R.id.action_scan_qr_code -> {
+//                startActivity(Intent(context, ScannerActivity::class.java))
+//                true
+//            }
             R.id.action_import_clipboard -> {
                 try {
                     val profiles = Profile.findAllUrls(clipboard.primaryClip!!.getItemAt(0).text, Core.currentProfile)
@@ -417,10 +417,10 @@ class ProfilesFragment : ToolbarFragment(), Toolbar.OnMenuItemClickListener {
         try {
             startActivityForResult(intent, requestCode)
         } catch (e: ActivityNotFoundException) {
-            Crashlytics.logException(e)
+            //Crashlytics.logException(e)
             (activity as MainActivity).snackbar(getString(R.string.file_manager_missing)).show()
         } catch (e: SecurityException) {
-            Crashlytics.logException(e)
+            //Crashlytics.logException(e)
             (activity as MainActivity).snackbar(getString(R.string.file_manager_missing)).show()
         }
     }

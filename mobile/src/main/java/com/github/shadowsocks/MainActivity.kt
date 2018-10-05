@@ -42,7 +42,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.updateLayoutParams
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.preference.PreferenceDataStore
-import com.crashlytics.android.Crashlytics
+////import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.acl.CustomRulesFragment
 import com.github.shadowsocks.aidl.IShadowsocksService
 import com.github.shadowsocks.aidl.IShadowsocksServiceCallback
@@ -138,7 +138,7 @@ class MainActivity : AppCompatActivity(), ShadowsocksConnection.Interface, OnPre
             resultCode == Activity.RESULT_OK -> Core.startService()
             else -> {
                 snackbar().setText(R.string.vpn_permission_denied).show()
-                Crashlytics.log(Log.ERROR, TAG, "Failed to start VpnService from onActivityResult: $data")
+                //Crashlytics.log(Log.ERROR, TAG, "Failed to start VpnService from onActivityResult: $data")
             }
         }
     }
@@ -226,7 +226,7 @@ class MainActivity : AppCompatActivity(), ShadowsocksConnection.Interface, OnPre
                 R.id.profiles -> displayFragment(ProfilesFragment())
                 R.id.globalSettings -> displayFragment(GlobalSettingsFragment())
                 R.id.about -> {
-                    Core.analytics.logEvent("about", Bundle())
+//                    Core.analytics.logEvent("about", Bundle())
                     displayFragment(AboutFragment())
                 }
                 R.id.faq -> {
@@ -243,7 +243,7 @@ class MainActivity : AppCompatActivity(), ShadowsocksConnection.Interface, OnPre
 
     override fun onResume() {
         super.onResume()
-        Core.remoteConfig.fetch()
+//        Core.remoteConfig.fetch()
     }
 
     override fun onStart() {

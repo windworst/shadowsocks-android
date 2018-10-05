@@ -34,7 +34,7 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceDataStore
 import androidx.preference.SwitchPreference
-import com.crashlytics.android.Crashlytics
+////import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.BootReceiver
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.ShadowsocksConnection
@@ -263,10 +263,10 @@ class MainPreferenceFragment : LeanbackPreferenceFragment(), ShadowsocksConnecti
         try {
             startActivityForResult(intent, requestCode)
         } catch (e: ActivityNotFoundException) {
-            Crashlytics.logException(e)
+            //Crashlytics.logException(e)
             Toast.makeText(activity, R.string.file_manager_missing, Toast.LENGTH_SHORT).show()
         } catch (e: SecurityException) {
-            Crashlytics.logException(e)
+            //Crashlytics.logException(e)
             Toast.makeText(activity, R.string.file_manager_missing, Toast.LENGTH_SHORT).show()
         }
     }
@@ -275,7 +275,7 @@ class MainPreferenceFragment : LeanbackPreferenceFragment(), ShadowsocksConnecti
         when (requestCode) {
             REQUEST_CONNECT -> if (resultCode == Activity.RESULT_OK) Core.startService() else {
                 Toast.makeText(activity, R.string.vpn_permission_denied, Toast.LENGTH_SHORT).show()
-                Crashlytics.log(Log.ERROR, TAG, "Failed to start VpnService from onActivityResult: $data")
+                //Crashlytics.log(Log.ERROR, TAG, "Failed to start VpnService from onActivityResult: $data")
             }
             REQUEST_IMPORT_PROFILES -> {
                 if (resultCode != Activity.RESULT_OK) return

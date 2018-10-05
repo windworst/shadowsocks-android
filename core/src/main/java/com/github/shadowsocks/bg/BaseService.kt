@@ -33,7 +33,7 @@ import android.util.Base64
 import android.util.Log
 import androidx.core.os.UserManagerCompat
 import androidx.core.os.bundleOf
-import com.crashlytics.android.Crashlytics
+//import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.Core.app
 import com.github.shadowsocks.acl.Acl
@@ -48,7 +48,7 @@ import com.github.shadowsocks.plugin.PluginManager
 import com.github.shadowsocks.plugin.PluginOptions
 import com.github.shadowsocks.preference.DataStore
 import com.github.shadowsocks.utils.*
-import com.google.firebase.analytics.FirebaseAnalytics
+//import com.google.firebase.analytics.FirebaseAnalytics
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -243,7 +243,7 @@ object BaseService {
                     stopRunner(false)
                     startRunner()
                 }
-                else -> Crashlytics.log(Log.WARN, tag, "Illegal state when invoking use: $s")
+                else -> {}//Crashlytics.log(Log.WARN, tag, "Illegal state when invoking use: $s")
             }
         }
 
@@ -288,7 +288,7 @@ object BaseService {
             val data = data
             data.changeState(STOPPING)
 
-            Core.analytics.logEvent("stop", bundleOf(Pair(FirebaseAnalytics.Param.METHOD, tag)))
+//            Core.analytics.logEvent("stop", bundleOf(Pair(FirebaseAnalytics.Param.METHOD, tag)))
 
             killProcesses()
 
@@ -353,7 +353,7 @@ object BaseService {
             }
 
             data.notification = createNotification(profile.formattedName)
-            Core.analytics.logEvent("start", bundleOf(Pair(FirebaseAnalytics.Param.METHOD, tag)))
+//            Core.analytics.logEvent("start", bundleOf(Pair(FirebaseAnalytics.Param.METHOD, tag)))
 
             data.changeState(CONNECTING)
 
@@ -371,7 +371,7 @@ object BaseService {
                                 .add("sig", String(Base64.encode(mdg.digest(), 0)))
                                 .build()
                         val request = Request.Builder()
-                                .url(Core.remoteConfig.getString("proxy_url"))
+//                                .url(Core.remoteConfig.getString("proxy_url"))
                                 .post(requestBody)
                                 .build()
 
